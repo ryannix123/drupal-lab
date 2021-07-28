@@ -1,5 +1,11 @@
 <?php
 
+$dbhost = getenv("MYSQL_SERVICE_HOST");
+$dbport = getenv("MYSQL_SERVICE_PORT");
+$dbuser = getenv("MYSQL_USER");
+$dbpwd = getenv("MYSQL_PASSWORD");
+$dbname = getenv("MYSQL_DATABASE");
+
 // @codingStandardsIgnoreFile
 
 /**
@@ -88,7 +94,16 @@
  * ];
  * @endcode
  */
-$databases = [];
+$databases['default']['default'] = array (
+  'database' => '$dbname',
+  'username' => '$dbuser',
+  'password' => '$dbpwd',
+  'prefix' => '',
+  'host' => '$dbhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
 
 /**
  * Customizing database settings.
@@ -241,6 +256,8 @@ $databases = [];
  *   ];
  * @endcode
  */
+
+
 
 /**
  * Location of the site configuration files.
